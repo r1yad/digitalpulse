@@ -36,18 +36,40 @@ jobs:
         with:
           gradle-version: '9.3.1'
 
-      - name: Prepare Android & Gradle Environment
+      - name: Accept Android SDK Licenses
         run: |
-          # 1. Accept Android SDK Licenses
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-          # 2. Restore debug.keystore if base64 file is present
-          if [ ! -f "debug.keystore" ] && [ -f "debug.keystore.base64" ]; then
-            echo "Restoring debug.keystore from debug.keystore.base64..."
-            base64 -d debug.keystore.base64 > debug.keystore
+      - name: Restore or Generate Debug Keystore
+        run: |
+          echo "Setting up debug.keystore for :app:validateSigningDebug..."
+          # 1. Try decoding from debug.keystore.base64 if available
+          if [ -f "debug.keystore.base64" ]; then
+            echo "Decoding debug.keystore from debug.keystore.base64..."
+            base64 --decode debug.keystore.base64 > debug.keystore || base64 -d debug.keystore.base64 > debug.keystore || true
           fi
 
-          # 3. Determine Gradle execution command (wrapper vs installed gradle)
+          # 2. If debug.keystore does not exist or is empty, generate it via keytool
+          if [ ! -s "debug.keystore" ]; then
+            echo "Generating debug.keystore using keytool..."
+            keytool -genkey -v \
+              -keystore debug.keystore \
+              -storepass android \
+              -alias androiddebugkey \
+              -keypass android \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -dname "CN=Android Debug,O=Android,C=US"
+          fi
+
+          # 3. Ensure keystore is accessible in root, app directory, and ~/.android
+          cp -f debug.keystore app/debug.keystore || true
+          mkdir -p ~/.android && cp -f debug.keystore ~/.android/debug.keystore || true
+          ls -la debug.keystore
+
+      - name: Configure Gradle Execution Command
+        run: |
           if [ -f "./gradlew" ]; then
             chmod +x ./gradlew
             echo "GRADLE_CMD=./gradlew" >> $GITHUB_ENV
@@ -89,6 +111,7 @@ jobs:
           name: DigitalPulse-debug-apk
           path: app/build/outputs/apk/debug/*.apk
           retention-days: 14
+          overwrite: true
 
       - name: Upload Release APK Artifact
         if: success()
@@ -98,6 +121,7 @@ jobs:
           path: app/build/outputs/apk/release/*.apk
           retention-days: 14
           if-no-files-found: ignore
+          overwrite: true
 
       - name: Create GitHub Release on Tag
         if: startsWith(github.ref, 'refs/tags/v')
