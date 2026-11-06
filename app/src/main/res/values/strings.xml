@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">DigitalPulse</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_network">Network</string>
+    <string name="nav_usage">Usage</string>
+    <string name="nav_notifications">Alerts</string>
+    <string name="nav_analytics">Analytics</string>
+
+    <!-- Dashboard -->
+    <string name="greeting_day">Good day</string>
+    <string name="greeting_evening">Good evening</string>
+    <string name="screen_time_title">Screen Time</string>
+    <string name="network_usage_title">Data Traffic</string>
+    <string name="battery_title">Battery Pulse</string>
+    <string name="notifications_title">Notifications</string>
+    <string name="clipboard_title">Clipboard History</string>
+    <string name="most_used_app">Top Application</string>
+    <string name="quick_shortcuts">Quick Controls</string>
+    <string name="daily_trend">Daily Activity Trend</string>
+
+    <!-- Network -->
+    <string name="cellular_data">Cellular</string>
+    <string name="wifi_data">Wi-Fi</string>
+    <string name="total_download">Download</string>
+    <string name="total_upload">Upload</string>
+    <string name="realtime_speed">Real-Time Speed</string>
+    <string name="billing_cycle">Billing Cycle</string>
+    <string name="data_allowance">Monthly Allowance</string>
+    <string name="export_csv">Export CSV</string>
+    <string name="csv_exported_success">Network data exported successfully to Downloads</string>
+
+    <!-- Screen Time -->
+    <string name="app_launch_count">Launches</string>
+    <string name="avg_session">Avg Session</string>
+    <string name="set_app_limit">Set Daily Limit</string>
+    <string name="limit_warning_75">75% of daily limit reached</string>
+    <string name="limit_warning_90">90% of daily limit reached</string>
+    <string name="limit_warning_100">Daily limit reached</string>
+
+    <!-- Notifications Saver -->
+    <string name="search_notifications">Search notification archive...</string>
+    <string name="filter_by_app">Filter by App</string>
+    <string name="all_apps">All Apps</string>
+    <string name="bookmark_notification">Bookmark</string>
+    <string name="clear_all_notifications">Clear Archive</string>
+    <string name="retention_days">Retention Period</string>
+    <string name="no_notifications_recorded">No notifications recorded yet</string>
+
+    <!-- Clipboard -->
+    <string name="clipboard_manager_title">Liquid Clipboard</string>
+    <string name="tab_temporary">Temporary (24h)</string>
+    <string name="tab_favorites">Favorites</string>
+    <string name="tab_permanent">Permanent</string>
+    <string name="add_clipboard_item">Add Entry</string>
+    <string name="clipboard_copied">Copied to clipboard</string>
+    <string name="search_clipboard">Search clipboard history...</string>
+    <string name="no_clipboard_items">No clipboard items found</string>
+
+    <!-- Battery -->
+    <string name="battery_level">Charge Level</string>
+    <string name="battery_temperature">Temperature</string>
+    <string name="battery_voltage">Voltage</string>
+    <string name="battery_status">Status</string>
+    <string name="battery_history">Battery Level History</string>
+
+    <!-- Automation Rules -->
+    <string name="automation_rules_title">Automation &amp; Rules</string>
+    <string name="create_new_rule">Create New Rule</string>
+    <string name="rule_name_hint">Rule Name</string>
+    <string name="threshold_hint">Threshold (e.g. 120 mins / 2048 MB / 42 °C)</string>
+    <string name="save_rule">Save Rule</string>
+    <string name="no_rules_configured">No automation rules configured</string>
+
+    <!-- Permissions -->
+    <string name="permission_required_title">Telemetry Permissions</string>
+    <string name="permission_usage_desc">Usage access is required to analyze application screen time and individual network bandwidth.</string>
+    <string name="permission_notification_desc">Notification access allows DigitalPulse to safely record incoming notifications locally.</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="permission_granted">Active</string>
+    <string name="permission_not_granted">Tap to Grant</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="theme_setting">Liquid Glass Theme</string>
+    <string name="dark_mode">Dark Liquid Glass</string>
+    <string name="light_mode">Light Liquid Glass</string>
+    <string name="system_mode">Follow System</string>
+    <string name="backup_restore">Backup &amp; Restore</string>
+    <string name="backup_now">Export Database Backup</string>
+    <string name="restore_backup">Import Database Backup</string>
+    <string name="about_title">About DigitalPulse</string>
+    <string name="about_desc">Native Java Android monitor with Liquid Glass design system, local Room database, and zero cloud tracking.</string>
+</resources>

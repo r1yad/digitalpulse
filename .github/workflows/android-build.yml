@@ -1,0 +1,79 @@
+name: Android Build & APK Release
+
+on:
+  push:
+    branches: [ main, master ]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build & Package APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Grant Execute Permission for Gradle Wrapper
+        run: chmod +x gradlew || true
+
+      - name: Run Unit Tests
+        run: gradle testDebugUnitTest --no-daemon --stacktrace
+
+      - name: Build Debug APK
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: Build Release APK (if signing configured)
+        run: |
+          if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
+            echo "Decoding upload keystore..."
+            echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > "${{ github.workspace }}/release.jks"
+            export KEYSTORE_PATH="${{ github.workspace }}/release.jks"
+            export STORE_PASSWORD="${{ secrets.KEYSTORE_PASSWORD }}"
+            export KEY_PASSWORD="${{ secrets.KEY_PASSWORD }}"
+            gradle assembleRelease --no-daemon --stacktrace
+          else
+            echo "Release keystore secret not set; using debug build."
+          fi
+
+      - name: Upload Debug APK Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DigitalPulse-debug-apk
+          path: app/build/outputs/apk/debug/*.apk
+          retention-days: 14
+
+      - name: Upload Release APK Artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: DigitalPulse-release-apk
+          path: app/build/outputs/apk/release/*.apk
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Create GitHub Release on Tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            app/build/outputs/apk/debug/*.apk
+            app/build/outputs/apk/release/*.apk
+          generate_release_notes: true

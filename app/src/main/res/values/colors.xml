@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Liquid Glass Dark Theme Colors -->
+    <color name="bg_dark">#0B0E14</color>
+    <color name="bg_dark_secondary">#121620</color>
+    <color name="bg_dark_gradient_top">#0B0E14</color>
+    <color name="bg_dark_gradient_bottom">#131B2A</color>
+
+    <color name="glass_surface_dark">#12FFFFFF</color>
+    <color name="glass_surface_dark_elevated">#1EFFFFFF</color>
+    <color name="glass_surface_dark_highlight">#2AFFFFFF</color>
+    <color name="glass_border_dark">#24FFFFFF</color>
+    <color name="glass_border_dark_glow">#4500E5FF</color>
+    <color name="glass_nav_bar_dark">#D910141D</color>
+
+    <!-- Liquid Glass Light Theme Colors -->
+    <color name="bg_light">#F1F5F9</color>
+    <color name="bg_light_secondary">#E2E8F0</color>
+    <color name="bg_light_gradient_top">#F8FAFC</color>
+    <color name="bg_light_gradient_bottom">#E2E8F0</color>
+
+    <color name="glass_surface_light">#B3FFFFFF</color>
+    <color name="glass_surface_light_elevated">#E6FFFFFF</color>
+    <color name="glass_border_light">#80FFFFFF</color>
+    <color name="glass_nav_bar_light">#E6FFFFFF</color>
+
+    <!-- Vibrant Luminous Accents -->
+    <color name="accent_cyan">#00E5FF</color>
+    <color name="accent_cyan_glow">#3300E5FF</color>
+    <color name="accent_violet">#B388FF</color>
+    <color name="accent_violet_glow">#33B388FF</color>
+    <color name="accent_emerald">#00E676</color>
+    <color name="accent_emerald_glow">#3300E676</color>
+    <color name="accent_amber">#FFB74D</color>
+    <color name="accent_coral">#FF5252</color>
+
+    <!-- High-Legibility Typography -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0BEC5</color>
+    <color name="text_muted">#64748B</color>
+
+    <color name="text_primary_light">#0F172A</color>
+    <color name="text_secondary_light">#475569</color>
+    <color name="text_muted_light">#94A3B8</color>
+
+    <color name="glass_pill_active">#2500E5FF</color>
+    <color name="glass_pill_inactive">#0AFFFFFF</color>
+    <color name="ripple_glass">#33FFFFFF</color>
+</resources>

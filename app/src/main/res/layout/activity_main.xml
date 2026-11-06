@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_ambient_mesh_dark">
+
+    <!-- Fragment Container -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Floating Liquid Glass Bottom Navigation Capsule -->
+    <LinearLayout
+        android:id="@+id/glass_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:background="@drawable/bg_glass_floating_nav"
+        android:elevation="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_max="480dp">
+
+        <!-- Tab 1: Home -->
+        <LinearLayout
+            android:id="@+id/nav_item_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/bg_glass_pill_active"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_home"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_nav_home"
+                app:tint="@color/accent_cyan"
+                android:contentDescription="@string/nav_home" />
+
+            <TextView
+                android:id="@+id/nav_label_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_home"
+                android:textSize="10sp"
+                android:textColor="@color/accent_cyan"
+                android:textStyle="bold"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 2: Network -->
+        <LinearLayout
+            android:id="@+id/nav_item_network"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_network"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_nav_network"
+                app:tint="@color/text_muted"
+                android:contentDescription="@string/nav_network" />
+
+            <TextView
+                android:id="@+id/nav_label_network"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_network"
+                android:textSize="10sp"
+                android:textColor="@color/text_muted"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 3: Usage -->
+        <LinearLayout
+            android:id="@+id/nav_item_usage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_usage"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_nav_usage"
+                app:tint="@color/text_muted"
+                android:contentDescription="@string/nav_usage" />
+
+            <TextView
+                android:id="@+id/nav_label_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_usage"
+                android:textSize="10sp"
+                android:textColor="@color/text_muted"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 4: Notifications -->
+        <LinearLayout
+            android:id="@+id/nav_item_notifications"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_notifications"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_nav_notifications"
+                app:tint="@color/text_muted"
+                android:contentDescription="@string/nav_notifications" />
+
+            <TextView
+                android:id="@+id/nav_label_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_notifications"
+                android:textSize="10sp"
+                android:textColor="@color/text_muted"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Tab 5: Analytics -->
+        <LinearLayout
+            android:id="@+id/nav_item_analytics"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/nav_icon_analytics"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_nav_analytics"
+                app:tint="@color/text_muted"
+                android:contentDescription="@string/nav_analytics" />
+
+            <TextView
+                android:id="@+id/nav_label_analytics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_analytics"
+                android:textSize="10sp"
+                android:textColor="@color/text_muted"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_ambient_mesh_dark"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_new_rule"
+        android:textColor="@color/text_primary"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Rule Name Input -->
+    <EditText
+        android:id="@+id/et_rule_name"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/bg_glass_search"
+        android:hint="@string/rule_name_hint"
+        android:textColorHint="@color/text_muted"
+        android:textColor="@color/text_primary"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:textSize="14sp"
+        android:inputType="textCapWords" />
+
+    <!-- Type Selection (Radio/Spinner/Pills) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trigger Type"
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp"
+        android:layout_marginTop="12dp" />
+
+    <RadioGroup
+        android:id="@+id/rg_rule_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="6dp">
+
+        <RadioButton
+            android:id="@+id/rb_screen_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Daily Screen Time (Minutes)"
+            android:textColor="@color/text_primary"
+            android:checked="true"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/rb_mobile_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cellular Data Consumption (MB)"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/rb_battery_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Battery Temperature (°C)"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp" />
+    </RadioGroup>
+
+    <!-- Threshold Input -->
+    <EditText
+        android:id="@+id/et_rule_threshold"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_glass_search"
+        android:hint="@string/threshold_hint"
+        android:textColorHint="@color/text_muted"
+        android:textColor="@color/text_primary"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:textSize="14sp"
+        android:inputType="numberDecimal" />
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp"
+        android:gravity="end">
+
+        <TextView
+            android:id="@+id/btn_cancel_rule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="@color/text_muted"
+            android:textSize="14sp"
+            android:padding="10dp"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/btn_save_rule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_rule"
+            android:textColor="@color/accent_cyan"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:background="@drawable/bg_glass_pill_active"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp" />
+    </LinearLayout>
+
+</LinearLayout>

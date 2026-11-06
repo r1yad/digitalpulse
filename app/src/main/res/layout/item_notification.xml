@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_glass_card"
+    android:padding="14dp">
+
+    <!-- Top line: App Name, Timestamp, Actions -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/actions_group">
+
+            <ImageView
+                android:id="@+id/iv_notif_app_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/ic_nav_notifications"
+                app:tint="@color/accent_cyan"
+                android:contentDescription="App" />
+
+            <TextView
+                android:id="@+id/tv_notif_app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Messages"
+                android:textColor="@color/accent_cyan"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_marginStart="6dp" />
+
+            <TextView
+                android:id="@+id/tv_notif_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="• 5m ago"
+                android:textColor="@color/text_muted"
+                android:textSize="11sp"
+                android:layout_marginStart="6dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/actions_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btn_notif_bookmark"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_bookmark"
+                app:tint="@color/text_muted"
+                android:contentDescription="Bookmark"
+                android:layout_marginEnd="12dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <ImageView
+                android:id="@+id/btn_notif_delete"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/text_muted"
+                android:contentDescription="Delete"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- Notification Title -->
+    <TextView
+        android:id="@+id/tv_notif_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sarah Connor"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <!-- Notification Content -->
+    <TextView
+        android:id="@+id/tv_notif_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hey, let's meet at 6 PM tomorrow!"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:layout_marginTop="3dp" />
+
+</LinearLayout>

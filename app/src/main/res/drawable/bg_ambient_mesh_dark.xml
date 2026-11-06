@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base dark background -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#0B0E14"
+                android:endColor="#111827" />
+        </shape>
+    </item>
+    <!-- Soft top aurora glow -->
+    <item
+        android:top="-100dp"
+        android:left="-50dp"
+        android:right="-50dp"
+        android:height="400dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="350dp"
+                android:startColor="#2500E5FF"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+    <!-- Soft bottom violet glow -->
+    <item
+        android:bottom="-120dp"
+        android:right="-60dp"
+        android:left="50dp"
+        android:height="450dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="400dp"
+                android:startColor="#22B388FF"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+</layer-list>

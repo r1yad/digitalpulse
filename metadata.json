@@ -1,0 +1,6 @@
+{
+  "name": "DigitalPulse",
+  "description": "Liquid Glass personal digital monitor tracking screen time, network data, notifications, clipboard history, battery health, and smart usage rules in native Java.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
