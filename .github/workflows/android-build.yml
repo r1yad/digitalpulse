@@ -25,25 +25,50 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
-      - name: Set up Gradle
+      - name: Set up Gradle 9.3.1
         uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.3.1'
 
-      - name: Accept Android SDK Licenses
+      - name: Prepare Android & Gradle Environment
         run: |
+          # 1. Accept Android SDK Licenses
           yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          chmod +x gradlew || true
+
+          # 2. Restore debug.keystore if base64 file is present
+          if [ ! -f "debug.keystore" ] && [ -f "debug.keystore.base64" ]; then
+            echo "Restoring debug.keystore from debug.keystore.base64..."
+            base64 -d debug.keystore.base64 > debug.keystore
+          fi
+
+          # 3. Determine Gradle execution command (wrapper vs installed gradle)
+          if [ -f "./gradlew" ]; then
+            chmod +x ./gradlew
+            echo "GRADLE_CMD=./gradlew" >> $GITHUB_ENV
+            echo "Using Gradle wrapper: ./gradlew"
+          else
+            echo "Gradle wrapper not found, generating wrapper..."
+            gradle wrapper || true
+            if [ -f "./gradlew" ]; then
+              chmod +x ./gradlew
+              echo "GRADLE_CMD=./gradlew" >> $GITHUB_ENV
+            else
+              echo "GRADLE_CMD=gradle" >> $GITHUB_ENV
+            fi
+            echo "Using: $GRADLE_CMD"
+          fi
 
       - name: Run Unit Tests
-        run: ./gradlew testDebugUnitTest --no-daemon --stacktrace
+        run: $GRADLE_CMD testDebugUnitTest --no-daemon --stacktrace
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --no-daemon --stacktrace
+        run: $GRADLE_CMD assembleDebug --no-daemon --stacktrace
 
       - name: Build Release APK (if signing configured)
         run: |
@@ -53,7 +78,7 @@ jobs:
             export KEYSTORE_PATH="${{ github.workspace }}/release.jks"
             export STORE_PASSWORD="${{ secrets.KEYSTORE_PASSWORD }}"
             export KEY_PASSWORD="${{ secrets.KEY_PASSWORD }}"
-            ./gradlew assembleRelease --no-daemon --stacktrace
+            $GRADLE_CMD assembleRelease --no-daemon --stacktrace
           else
             echo "Release keystore secret not set; skipping release build."
           fi
